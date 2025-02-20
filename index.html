@@ -1,43 +1,19 @@
-import asyncio
-from aiogram import Bot, Dispatcher, types
-from aiogram.types import WebAppInfo
-from aiogram.filters import Command
-import logging
-
-# Токен бота (замени на свой)
-TOKEN = "7644991979:AAGEjqyOf85SYo6S_g6mN_BfKf1gnCMQuUk"
-
-# Инициализация бота и диспетчера
-bot = Bot(token=TOKEN)
-dp = Dispatcher()
-
-# URL веб-приложения (замени на свой)
-WEB_APP_URL = "t.me/vilsonhotelbot/vilsonaiassistant"  # Ссылка на мини-приложение
-
-
-# Обработчик команды /start
-@dp.message(Command("start"))
-async def start(message: types.Message):
-    keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vilson Assistant</title>
+</head>
+<body>
+    <h1>Ласкаво просимо до Vilson Assistant</h1>
+    <p>Натисніть кнопку нижче, щоб відкрити асистента.</p>
     
-    web_app_button = types.KeyboardButton(
-        text="🔗 Відкрити асистента",
-        web_app=WebAppInfo(url=WEB_APP_URL)
-    )
-    keyboard.add(web_app_button)
-
-    await message.answer(
-        "👋 Вітаємо! Натисніть кнопку нижче, щоб відкрити асистента Vilson!",
-        reply_markup=keyboard
-    )
-
-
-# Запуск бота
-async def main():
-    logging.basicConfig(level=logging.INFO)
-    print("Бот запущен...")
-    await dp.start_polling(bot)
-
-if __name__ == "__main__":
-    asyncio.run(main())
-
+    <!-- Кнопка для открытия веб-приложения -->
+    <a href="https://t.me/vilsonhotelbot/vilsonaiassistant" target="_blank">
+        <button style="padding: 15px 20px; font-size: 18px; background-color: #6C4B76; color: white; border: none; cursor: pointer;">
+            🔗 Відкрити асистента
+        </button>
+    </a>
+</body>
+</html>
